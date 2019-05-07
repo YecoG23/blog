@@ -8,14 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>{% block head_title %}{% endblock head_title %}</title>
+    <title>Navbar Template · Bootstrap</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/blog/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/navbars/">
 
     <!-- Bootstrap core CSS -->
 <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -26,81 +24,62 @@
         user-select: none;
       }
 
-      .blog-header {
-	  line-height: 1;
-	  border-bottom: 1px solid #e5e5e5;
-	}
-
-	.blog-header-logo {
-	  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-	  font-size: 2.25rem;
-	}
-
-	.blog-footer {
-	  padding: 2.5rem 0;
-	  color: #999;
-	  text-align: center;
-	  background-color: #f9f9f9;
-	  border-top: .05rem solid #e5e5e5;
-	}
-	.blog-footer p:last-child {
-	  margin-bottom: 0;
-	}
-
-	.blog-pagination {
-	  margin-bottom: 4rem;
-	}
-	.blog-pagination > .btn {
-	  border-radius: 2rem;
-	}
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
-
+      /*
+       * Footer
+       */
+      .blog-footer {
+        padding: 2.5rem 0;
+        color: #999;
+        text-align: center;
+        background-color: #f9f9f9;
+        border-top: .05rem solid #e5e5e5;
+      }
+      .blog-footer p:last-child {
+        margin-bottom: 0;
+      }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-<!--     <link href="https://getbootstrap.com/docs/4.3/examples/blog/blog.css" rel="stylesheet">
- -->  </head>
 
-  <body>
-    <div class="container">
-  <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-2 pt-1">
-        <a class="text-muted" href="#">Suscribete</a>
-      </div>
-      <div class="col-8 text-center">
-        <a class="blog-header-logo text-dark" href="#">ROLANDO OSCCO SOLORZANO</a>
-      </div>
-      <div class="col-2 d-flex justify-content-end align-items-center">
-        <a class="text-muted" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Busca</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-        </a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">Entra</a>
-      </div>
+  </head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Container</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample07">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown07">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form>
     </div>
-  </header>
-
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="#">Mundo</a>
-      <a class="p-2 text-muted" href="#">U.S.</a>
-      <a class="p-2 text-muted" href="#">Tecnologia</a>
-      <a class="p-2 text-muted" href="#">Diseño</a>
-      <a class="p-2 text-muted" href="#">Cultura</a>
-      <a class="p-2 text-muted" href="#">Negocios</a>
-      <a class="p-2 text-muted" href="#">Politicas</a>
-      <a class="p-2 text-muted" href="#">Opinion</a>
-      <a class="p-2 text-muted" href="#">Ciencia</a>
-      <a class="p-2 text-muted" href="#">Salud</a>
-      <a class="p-2 text-muted" href="#">Estilo</a>
-      <a class="p-2 text-muted" href="#">Viajes</a>
-    </nav>
   </div>
+</nav>
+
 {% block content %}
 
 
@@ -112,5 +91,8 @@
     <a href="#">Regresar al Inicio</a>
   </p>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 </body>
 </html>
