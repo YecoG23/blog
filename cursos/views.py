@@ -10,6 +10,9 @@ from django.urls import reverse_lazy
 from .models import Curso, Aula
 from .forms import CursoForm, AulaForm
 
+#DEFINING GLOBAL VARIABLE FOR "SESION"
+current_sesion = 4
+
 ## CREATE, DETAIL, LIST AND VIEW CURSO CLASS
 
 class CursoCreateView(SuccessMessageMixin, CreateView):
@@ -19,6 +22,11 @@ class CursoCreateView(SuccessMessageMixin, CreateView):
 
 class CursoDetailView(DetailView):
     model = Curso
+    def get_context_data(self, **kwargs):
+        context = super(CursoDetailView, self).get_context_data(**kwargs)
+        context['current_sesion'] = current_sesion
+        context['aulas'] = Aula.objects.filter(curso__id=self.kwargs['pk'])
+        return context
 
 class CursoListView( ListView):
     model = Curso
@@ -41,6 +49,7 @@ class AulaCreateView(SuccessMessageMixin, CreateView):
 
 class AulaDetailView(DetailView):
     model = Aula
+    template_name = 'cursos/curso_aula_detail.html'
 
 class AulaListView( ListView):
     model = Aula

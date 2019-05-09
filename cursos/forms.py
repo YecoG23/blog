@@ -9,7 +9,7 @@ class CursoForm(ModelForm):
 class AulaForm(ModelForm):
 	class Meta:
 		model = Aula
-		fields = ['nombre','curso']
+		fields = ['nombre','curso','descripcion']
 		# widgets = {
 		# 	'curso': SelectMultiple(choices = list(Projeto.objects.all().values_list('id','nome'))),
 		# }
