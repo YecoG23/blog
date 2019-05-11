@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %} {{curso_nombre |title}} - Aulas {% endblock title %}
+
+{% block content %}
+{{curso}}
+<div class="container">
+	<div class="row ml-1 mt-3">
+		<h3 class="display-5">{{curso_nombre | title}}</h3>
+	</div>
+	<div class="row mt-3">
+		<div class="col-12 col-md-4 col-lg-4 mb-3">
+			<!-- List group -->
+			<div class="list-group" id="myList" role="tablist">
+			{% for a in aulas %}
+				{% if a.num_sesion == object.num_sesion %}
+				<a class="list-group-item list-group-item-action active" data-toggle="list" href="#{{a.nombre|slugify}}" role="tab">Sesion {{a.num_sesion}} - {{a.nombre}}</a>
+				{% else %}
+				<a class="list-group-item list-group-item-action" data-toggle="list" href="#{{a.nombre|slugify}}" role="tab">Sesion {{a.num_sesion}} - {{a.nombre}}</a>
+				{% endif %}
+			{% endfor %}
+			
+			</div>
+		</div>
+		<div class="col-12 col-md-8 col-lg-8 mb-3">
+			<!-- Tab panes -->
+			<div class="tab-content">
+			{% for a in aulas %}
+				{% if a.num_sesion == object.num_sesion %}			
+				  <div class="tab-pane active" id="{{a.nombre|slugify}}" role="tabpanel">
+				  	<h4>{{a.nombre}}</h4>
+				  	<p class="lead">{{a.descripcion}}</p>
+				  	<!-- Table show files -->
+				  	<table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Diapositiva <span class="fa fa-file-powerpoint-o"></span></th>
+					      <th scope="col">Taller grupal <span class="fa fa-file-word-o"></span></th>
+					      <th scope="col">Taller individual <span class="fa fa-file-word-o"></span></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">1</th>
+					      <td>file 1</td>
+					      <td>file 2</td>
+					      <td>file 3</td>
+					    </tr>
+					  </tbody>
+					</table>
+					<!-- EndTable show files -->
+					<small class="text-muted">Ultima actualizacion en {{aula.actualizado}}</small>
+				  </div>
+			  	{% else %}
+				  <div class="tab-pane" id="{{a.nombre|slugify}}" role="tabpanel">
+				  	<h4>{{a.nombre}}</h4>
+				  	<p class="lead">{{a.descripcion}}</p>
+				  	<!-- Table show files -->
+				  	<table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Diapositiva <span class="fa fa-file-powerpoint-o"></span></th>
+					      <th scope="col">Taller grupal <span class="fa fa-file-word-o"></span></th>
+					      <th scope="col">Taller individual <span class="fa fa-file-word-o"></span></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th scope="row">1</th>
+					      <td>file 1</td>
+					      <td>file 2</td>
+					      <td>file 3</td>
+					    </tr>
+					  </tbody>
+					</table>
+					<!-- EndTable show files -->
+					<small class="text-muted">Ultima actualizacion en {{object.actualizado}}</small>
+				  </div>			  	
+			  	{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock js%}

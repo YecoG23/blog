@@ -1,57 +1,40 @@
 {% extends "base.html" %}
 
-{% block head_title %} {{curso.nombre}} - Detalles {% endblock head_title %}
+{% block title %} {{curso.nombre}} - Detalles {% endblock title %}
 
 {% block content %}
-
-<div class="card mx-auto" style="width: 72rem;">
-  <div class="card-header">
-    Dictado por : {{curso.profesor}}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{curso.nombre}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Ingenierias/Educacion Inicial</h6>
-    <p class="card-text"> {{curso.descripcion}} </p>
-
-
-    <div class="list-group">
-    {% for aula in aulas %}
-	    {% if current_sesion == aula.num_sesion %}
-			<a href="#" class="list-group-item list-group-item-action active">
-		{% else %}
-			<a href="#" class="list-group-item list-group-item-action">
-		{% endif %}		
-			    <div class="d-flex">
-				  <div class="mr-auto p-2">{{aula.nombre}}</div>
-				  <div class="p-2">Diapositivas</div>
-				  <div class="p-2">Taller Individual</div>
-				  <div class="p-2">Taller Grupal</div>
-				</div>
-		  	</a>
-	{% endfor %}
-	</div>
-
-
-
-
-
-<!--     <div class="list-group">
-	  <a href="#" class="list-group-item list-group-item-action active">
-	    Cras justo odio
-	  </a>
-	  <a href="#" class="list-group-item list-group-item-action">
-		<div class="d-flex">
-		  <div class="mr-auto p-2">Flex item</div>
-		  <div class="p-2">Flex item 1</div>
-		  <div class="p-2">Flex item 2</div>
-		  <div class="p-2">Flex item 3</div>
+<div class="container">
+	<div class="card mx-auto mb-3">
+	  <div class="card-header">
+	    Dictado por : {{curso.profesor}}
+	  </div>
+	  <div class="card-body">
+	    <h4 class="card-title">{{curso.nombre | title}}</h4>
+	    <h6 class="card-subtitle mb-2 text-muted">{{curso.programa}}</h6>
+	    <strong>  Pre requisito:</strong><mark>{{curso.pre_requisito}}</mark>
+	    <strong>  Numero de creditos:</strong><mark>{{curso.num_credito}}</mark>
+	    <strong>  Ciclo academico:</strong><mark>{{curso.ciclo_academico}}</mark>
+	    <p class="card-text"> {{curso.descripcion}} </p>
+	    <div class="list-group">
+	    {% for aula in aulas %}
+		    {% if current_sesion == aula.num_sesion %}
+				<a href="{% url 'view_aula' slug=curso.nombre pk=aula.id %}" class="list-group-item list-group-item-action active">
+			{% else %}
+				<a href="{% url 'view_aula' slug=curso.nombre pk=aula.id %}" class="list-group-item list-group-item-action">
+			{% endif %}		
+				    <div class="d-flex">
+					  <div class="mr-auto p-2">Sesion {{aula.num_sesion}} - {{aula.nombre}}</div>
+					  <div class="p-2"><span class="fa fa-file-powerpoint-o"></span></div>
+					  <div class="p-2"><span class="fa fa-file-word-o"></span></div>
+					  <div class="p-2"><span class="fa fa-file-word-o"></span></div>
+					</div>
+			  	</a>
+		{% endfor %}
 		</div>
-	  </a>
-	  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-	  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-	</div> -->
-
-  </div>
+		<a href="javascript:history.back()">
+			<button type="button" class="btn btn-secondary mt-3">Atras</button>
+		</a>
+	  </div>
+	</div>
 </div>
-
 {% endblock %}

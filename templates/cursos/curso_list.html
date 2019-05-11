@@ -1,49 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
 
 
 {% block title %}Lista de Cursos{% endblock title %}
 
 {% block content %}
-  <div class="row mx-auto">
-    <div class="col-lg-12">
+<div class="container">
+		<div class="card mb-3 img-fluid">
+			{% if object_list %}
+				{% for curso in object_list %}
+				  <img class="card-img-top" src="{{curso.banner_img.url}}" width="780" height="250">
+				  <div class="card-body">
+				    <h5 class="card-title">{{curso.nombre}}</h5>
+				    <p class="card-text">{{curso.descripcion}}</p>
+				    <a href="{% url 'view_curso' slug=curso.slug %}">
+				    	<button type="button" class="btn btn-primary mb-3">Ir al curso >></button>
+				    </a>
+				    <a href="javascript:history.back()">
+				    	<button type="button" class="btn btn-secondary mb-3">Atras</button>
+				    </a>
+				    <p class="card-text"><small class="text-muted">Ultima actualizacion en : {{curso.actualizado}}</small></p>
+				  </div>	
+				{% endfor %}
+			{%else %}
+			<h2>No hay ningun curso registrado!</h2>
+			{% endif %}
 
-      <div class="page-header">
-        <h1>Lista de cursos - <small>registrados para {{request.user}} </small></h1>
-      </div>
-      
-      {% if not object_list %}
-        <p><strong>No hay ningun curso registrado a su cargo.</strong> Registre uno ahora <a href="{% url 'new_curso' %}"></a>
-      {% endif %}
-
- <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-    </div>
-  </div>
+		</div>
+</div>
 {% endblock %}
+
